@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import api from "../services/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function AdminSetup() {
   const [step, setStep] = useState(1);
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,7 +18,9 @@ function AdminSetup() {
       await api.post("/auth/setup-super-admin", { fullName, password });
       setStep(2);
     } catch (err) {
-      setError(err.response?.data?.message || "Failed to start setup.");
+      const msg = err.response?.data?.message || "Failed to start setup.";
+      setError(msg);
+      alert("Error: " + msg); // Added for visibility
     }
     setLoading(false);
   };
@@ -31,9 +32,12 @@ function AdminSetup() {
     try {
       const response = await api.post("/auth/verify-super-admin-otp", { otp });
       localStorage.setItem("user", JSON.stringify(response.data.user));
+      alert("Success! Account verified."); 
       navigate("/");
     } catch (err) {
-      setError(err.response?.data?.message || "Failed to verify OTP.");
+       const msg = err.response?.data?.message || "Failed to verify OTP.";
+       setError(msg);
+       alert("Verification Error: " + msg); // Added for visibility
     }
     setLoading(false);
   };
@@ -53,14 +57,22 @@ function AdminSetup() {
               style={styles.input}
               required
             />
-            <input
-              type="password"
-              placeholder="Choose a Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={styles.input}
-              required
-            />
+            <div style={styles.passwordContainer}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Choose a Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={styles.input}
+                  required
+                />
+                <span 
+                    style={styles.eyeIcon} 
+                    onClick={() => setShowPassword(!showPassword)}
+                >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+            </div>
             <button type="submit" style={styles.button} disabled={loading}>
               {loading ? "Sending OTP..." : "Continue"}
             </button>
@@ -127,6 +139,19 @@ const styles = {
     fontWeight: "bold",
     cursor: "pointer",
     marginTop: "10px",
+  },
+  passwordContainer: {
+    position: 'relative',
+    width: '100%',
+  },
+  eyeIcon: {
+    position: 'absolute',
+    right: '15px',
+    top: '38%',
+    transform: 'translateY(-50%)',
+    cursor: 'pointer',
+    color: '#8A8A8E',
+    fontSize: '20px',
   },
   error: {
     color: "#DC3545",
