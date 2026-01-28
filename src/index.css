@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FFD700;
+  --color-primary-hover: #e6c200;
+  
+  --color-dark: #1a1a1a;
+  --color-dark-sidebar: #121212;
+  --color-dark-light: #2d2d2d;
+  
+  --color-light: #f8f9fa;
+  
+  --font-sans: Inter, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-800 font-sans;
+  }
+}
