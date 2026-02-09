@@ -9,6 +9,7 @@ import {
   FaUserFriends,
   FaCheckCircle,
   FaTimesCircle,
+  FaUserShield,
 } from "react-icons/fa";
 
 function Layout() {
@@ -118,6 +119,13 @@ function Layout() {
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
           >
             <FaHistory className="text-lg" /> Activity Logs
+          </NavLink>
+          <NavLink
+            to="/admin-management"
+            onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
+            className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
+          >
+            <FaUserShield className="text-lg" /> Manage Admins
           </NavLink>
         </nav>
         

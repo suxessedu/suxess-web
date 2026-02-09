@@ -18,6 +18,8 @@ import ActivityLogs from "./pages/ActivityLogs";
 import Analytics from "./pages/Analytics";
 import LessonLogs from "./pages/LessonLogs";
 
+import AdminManagement from "./pages/AdminManagement";
+
 const isAuthenticated = () => {
   try {
     const userString = localStorage.getItem("user");
@@ -52,6 +54,7 @@ const router = createBrowserRouter([
       { path: "logs", element: <ActivityLogs /> },
       { path: "lesson-logs", element: <LessonLogs /> },
       { path: "analytics", element: <Analytics /> },
+      { path: "admin-management", element: <AdminManagement /> },
     ],
   },
   { path: "/login", element: <Login /> },
