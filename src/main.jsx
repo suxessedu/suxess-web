@@ -19,6 +19,7 @@ import Analytics from "./pages/Analytics";
 import LessonLogs from "./pages/LessonLogs";
 
 import AdminManagement from "./pages/AdminManagement";
+import Broadcasts from "./pages/Broadcasts";
 
 const isAuthenticated = () => {
   try {
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
       { path: "lesson-logs", element: <LessonLogs /> },
       { path: "analytics", element: <Analytics /> },
       { path: "admin-management", element: <AdminManagement /> },
+      { path: "broadcasts", element: <Broadcasts /> },
     ],
   },
   { path: "/login", element: <Login /> },
