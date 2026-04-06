@@ -34,18 +34,20 @@ function Layout() {
 
   const getPageTitle = () => {
     switch (location.pathname) {
-      case "/":
+      case "/admin":
         return "Dashboard Overview";
-      case "/requests":
+      case "/admin/requests":
         return "Tutor Requests";
-      case "/teachers":
+      case "/admin/teachers":
         return "All Teachers";
-      case "/parents":
+      case "/admin/parents":
         return "All Parents";
-      case "/lesson-logs":
+      case "/admin/lesson-logs":
         return "Lesson Logs";
-      case "/logs":
+      case "/admin/logs":
         return "Full Activity Logs";
+      case "/admin/news":
+        return "News & Updates";
       default:
         return "Admin Panel";
     }
@@ -79,7 +81,7 @@ function Layout() {
         
         <nav className="flex-1 p-4 overflow-y-auto">
           <NavLink
-            to="/"
+            to="/admin"
             end
             onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
@@ -87,53 +89,53 @@ function Layout() {
             <FaTachometerAlt className="text-lg" /> Dashboard
           </NavLink>
           <NavLink
-            to="/requests"
+            to="/admin/requests"
             onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
           >
             <FaFileAlt className="text-lg" /> Tutor Requests
           </NavLink>
           <NavLink
-            to="/teachers"
+            to="/admin/teachers"
             onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
           >
             <FaUserTie className="text-lg" /> Teachers
           </NavLink>
           <NavLink
-            to="/parents"
+            to="/admin/parents"
             onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
           >
             <FaUserFriends className="text-lg" /> Parents
           </NavLink>
           <NavLink
-            to="/lesson-logs"
+            to="/admin/lesson-logs"
             onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
           >
             <FaChalkboard className="text-lg" /> Lesson Logs
           </NavLink>
           <NavLink
-            to="/logs"
+            to="/admin/logs"
             onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
           >
             <FaHistory className="text-lg" /> Activity Logs
           </NavLink>
           <NavLink
-            to="/admin-management"
+            to="/admin/admin-management"
             onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
           >
             <FaUserShield className="text-lg" /> Manage Admins
           </NavLink>
           <NavLink
-            to="/broadcasts"
+            to="/admin/news"
             onClick={() => window.innerWidth <= 992 && setSidebarOpen(false)}
             className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mb-1 ${isActive ? "bg-primary text-gray-900 font-bold" : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}`}
           >
-            <FaBullhorn className="text-lg" /> Broadcasts
+            <FaFileAlt className="text-lg" /> News & Updates
           </NavLink>
         </nav>
         

@@ -15,7 +15,7 @@ function Login() {
         return;
       }
       localStorage.setItem("user", JSON.stringify(response.data.user));
-      window.location.href = "/";
+      window.location.href = "/admin";
     } catch (err) {
       setError("Invalid credentials. Please try again.");
     }

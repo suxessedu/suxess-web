@@ -19,7 +19,8 @@ import Analytics from "./pages/Analytics";
 import LessonLogs from "./pages/LessonLogs";
 
 import AdminManagement from "./pages/AdminManagement";
-import Broadcasts from "./pages/Broadcasts";
+import NewsManagement from "./pages/NewsManagement";
+import LandingPage from "./pages/LandingPage";
 
 const isAuthenticated = () => {
   try {
@@ -42,6 +43,10 @@ const ProtectedRoute = ({ children }) => {
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/admin",
     element: (
       <ProtectedRoute>
         <Layout />
@@ -56,7 +61,7 @@ const router = createBrowserRouter([
       { path: "lesson-logs", element: <LessonLogs /> },
       { path: "analytics", element: <Analytics /> },
       { path: "admin-management", element: <AdminManagement /> },
-      { path: "broadcasts", element: <Broadcasts /> },
+      { path: "news", element: <NewsManagement /> },
     ],
   },
   { path: "/login", element: <Login /> },

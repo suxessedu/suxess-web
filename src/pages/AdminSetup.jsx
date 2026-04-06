@@ -36,7 +36,7 @@ function AdminSetup() {
       const response = await api.post("/auth/verify-super-admin-otp", { otp });
       localStorage.setItem("user", JSON.stringify(response.data.user));
       alert("Success! Account verified."); 
-      navigate("/");
+      navigate("/admin");
     } catch (err) {
        const msg = err.response?.data?.message || "Failed to verify OTP.";
        setError(msg);
